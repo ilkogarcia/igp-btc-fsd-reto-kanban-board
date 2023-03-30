@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Notes from './components/Notes'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -14,26 +14,32 @@ const notesData = [
     task: 'Do laundry'
   }
 ]
-const addNote = () => {
-  // Add a note to the array
-  notesData.push({
-    id: uuidv4(),
-    task: 'New task'
-  })
-}
 
 export const App = () => {
-  const [count, setCount] = useState(0)
+  const [notes, setNotes] = useState(notesData)
 
-  const handleClick = () => {
-    setCount(count + 1)
-    addNote()
+  const addNote = () => {
+    setNotes(
+      [...notes,
+        {
+          id: uuidv4(),
+          task: 'New task'
+        }
+      ])
+  }
+
+  const deleteNote = (id) => {
+    setNotes(
+      notes.filter(note => note.id !== id)
+    )
   }
 
   return (
     <main className='App'>
-      <button onClick={() => handleClick()}>+ Add Note</button>
-      <Notes notes={notesData}/>
+      <button onClick={() => addNote()}>
+        + Add Note
+      </button>
+      <Notes notes={notes} onDelete={deleteNote} />
     </main>
   )
 }

@@ -11,7 +11,8 @@ export const Note = ({ task, onDelete }) => {
 }
 
 Note.propTypes = {
-  task: PropTypes.string
+  task: PropTypes.string,
+  onDelete: PropTypes.func
 }
 
 export default Note
