@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Note } from './Note'
 
-export const Notes = ({ notes, onDelete = () => {} }) => (
+export const Notes = ({ notes, onDelete = () => {} }) => {
+  return (
     <ul>
     {notes.map(({ id, task }) =>
         <li key={id}>
@@ -12,11 +13,12 @@ export const Notes = ({ notes, onDelete = () => {} }) => (
         </li>
     )}
     </ul>
-)
+  )
+}
 
 Notes.propTypes = {
-  notes: PropTypes.array,
-  onDelete: PropTypes.func
+  notes: PropTypes.array.isRequired,
+  onDelete: PropTypes.func.isRequired
 }
 
 export default Notes
