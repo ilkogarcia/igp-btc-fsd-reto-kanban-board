@@ -1,18 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export const Note = ({ task, onDelete }) => {
+export const Note = ({ children, ...props }) => {
   return (
-    <div>
-        <span>{ task }</span>
-        <button onClick={onDelete}>x</button>
+    <div {...props}>
+      {children}
     </div>
   )
 }
 
 Note.propTypes = {
-  task: PropTypes.string.isRequired,
-  onDelete: PropTypes.func.isRequired
+  children: PropTypes.any.isRequired
 }
 
 export default Note
